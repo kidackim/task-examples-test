@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: ui-test-job
+  name: ui-test
+  labels:
+    app: playwright
+    name: ui-jobs
+spec:
+  ttlSecondsAfterFinished: 0
+  backoffLimit: 0
+  template:
+    metadata:
+      name: ui-test-job
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: sample-ui-test
+          image: kidackim/playwright-examples:latest
+          imagePullPolicy: 'Always'
+          args: ['-c', 'npm test']
+          volumeMounts:
+            - name: storage
+              mountPath: /app/playwright-report
+
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: logs-persistent-vol-claim

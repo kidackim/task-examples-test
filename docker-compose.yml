@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  report:
+    image: nginx:1.14
+    ports:
+      - '81:80'
+    volumes:
+      - test-report:/usr/share/nginx/html
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task
+    working_dir: /app
+    image: tests
+    volumes:
+      - .:/app
+      - test-report:/report
+      - /app/node_modules
+
+volumes:
+  test-report:
