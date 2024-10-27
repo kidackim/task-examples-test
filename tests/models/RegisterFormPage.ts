@@ -48,7 +48,7 @@ export class RegisterFormPage {
     this.submitButton = page.locator('button[type="submit"]');
   }
 
-  async goto(url: string = 'http://192.168.1.253:8082/'): Promise<void> {
+  async goto(url: string = 'http://localhost:8082/'): Promise<void> {
     await this.page.goto(url);
   }
 

@@ -52,6 +52,10 @@ Wszystkie metody uruchomienia testów
 
 Generują raport w katalogu playwright-report/index.html
 
+Dla npm adres domowy to localhost \
+Dla dockera to npm run serve z adresem network \
+Dla k8s również adres z serve z netowrka
+
 # Treść zadania
 
 Udało mi się napisać 26 testów sprawdzających podany formularz. \
@@ -67,4 +71,9 @@ Dla łatwiejszego przeglądania treści scenariuszy testowych umieszczam zdjęci
 
 ```sh
 open -a "safari" playwright-report/index.html
+```
+
+lub jeżeli uruchamiamy testy za pomocą docker-compose to pod adresem: \
+```sh
+http://localhost:81
 ```
